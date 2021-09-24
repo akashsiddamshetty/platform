@@ -1,4 +1,5 @@
 const windmill = require("@windmill/react-ui/config");
+const colors = require('tailwindcss/colors')
 
 module.exports = windmill({
   corePlugins: {
@@ -12,18 +13,7 @@ module.exports = windmill({
         "2xl": "0 25px 50px -12px rgba(0, 0, 0, 0.08)",
       },
       colors: {
-        gray: {
-          50: "#FAFAFA",
-          100: "#F4F4F5",
-          200: "#E4E4E7",
-          300: "#D4D4D8",
-          400: "#A2A2A8",
-          500: "#6E6E76",
-          600: "#52525A",
-          700: "#3F3F45",
-          800: "#2E2E33",
-          900: "#1D1D20",
-        },
+        gray: colors.gray,
         purple: {
           50: "#FAF5FF",
           100: "#F3E8FF",
@@ -54,7 +44,8 @@ module.exports = windmill({
         },
         teal: {
           brand: "#5499ab"
-        }
+        },
+        cyan: colors.cyan,
       },
       spacing: {
         128: "32rem",
