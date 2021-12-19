@@ -21,8 +21,8 @@
     "lodash.debounce": "^4.0.8",
     "moment": "^2.29.1",
     "node-sass": "4.14.1",
-    "postcss": "^8.2.8",
-    "postcss-import": "^14.0.1",
+    "postcss": "^8.4.5",
+    "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.5",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
@@ -44,9 +44,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build --verbose",
+    "build": "yarn build:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:css": "TAILWIND_MODE=watch postcss src/styles/tailwind.pcss -o src/styles/output.css --watch",
+    "build:css": "postcss src/styles/tailwind.pcss -o src/styles/output.css --minify"
   },
   "eslintConfig": {
     "extends": [
@@ -67,11 +69,11 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.4.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
-    "postcss-cli": "^8.3.1",
+    "postcss-cli": "^9.1.0",
     "prettier": "2.2.1",
-    "tailwindcss": "^2.2.15"
+    "tailwindcss": "^3.0.7"
   }
 }

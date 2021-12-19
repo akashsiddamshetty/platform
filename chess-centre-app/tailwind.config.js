@@ -5,7 +5,8 @@ module.exports = windmill({
   corePlugins: {
     ringColor: true
   },
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  mode: "jit",
+  purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false,
   theme: {
     extend: {
