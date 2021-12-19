@@ -1,7 +1,5 @@
-import API from "@aws-amplify/api";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { listEventsActive } from "../../graphql/queries";
 import FooterLanding from "../../components/Footer/LandingFooter";
 import { useAuthState } from "../../context/Auth";
 import LandingNav from "../../components/Navigation/LandingNav";
@@ -9,37 +7,12 @@ import ComingEvents from "../../components/Calendar/ComingEvents";
 import FAQs from "../../components/FAQs/Faqs";
 import FindUs from "../../components/Map/FindUs";
 import DownloadPWA from "../../components/Quote/PWA";
+import Integrations from "../../components/Integrations";
+import { LiveGameContext } from "../../context/LiveGameContext";
 
 const Home = () => {
   const { user } = useAuthState();
-  const yesterday = new Date(Date.now() - (3600 * 1000 * 24));
-  const [eventInfo, setEventInfo] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      setIsLoading(true);
-      const  { data: { listEventsActive: { items } }} = await API.graphql({
-        query: listEventsActive,
-        variables: { active: "yes", startDate: { gt: yesterday }, filter: { isLive: { eq: true } } },
-        authMode: "AWS_IAM",
-      }).catch((error) => {
-        setIsLoading(false);
-        console.log("Error loading live data", error);
-      });
-      if(items) {
-        setEventInfo(items);
-      }
-      setIsLoading(false);
-    };
-    try {
-      fetchEvents();
-    } catch (error) {
-      setIsLoading(false);
-      console.log("Error loading live data", error);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { eventInfo, isLoading } = React.useContext(LiveGameContext);
 
   return (
     <div>
@@ -152,9 +125,9 @@ const Home = () => {
                 </div>
               </div>
               {!isLoading ? (
-                eventInfo.map(() => {
+                eventInfo.map((_, key) => {
                   return (
-                    <div className="mt-4">
+                    <div key={key} className="mt-4">
                       <div className="mt-2 max-w-md mx-auto sm:flex sm:justify-center">
                         <div className="rounded-md shadow">
                           <Link
@@ -186,7 +159,7 @@ const Home = () => {
                   </div>
                 </div>
               )}
-            </div>
+             </div>
           </main>
         </div>
       </div>
@@ -208,6 +181,7 @@ const Home = () => {
       <FAQs />
       <FindUs />
       <DownloadPWA />
+      <Integrations />
       <FooterLanding />
     </div>
   );

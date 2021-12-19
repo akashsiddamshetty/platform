@@ -363,6 +363,13 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "liChessUrl": {
+                    "name": "liChessUrl",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -561,6 +568,13 @@ export const schema = {
                     "name": "isLive",
                     "isArray": false,
                     "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "isLiveUrl": {
+                    "name": "isLiveUrl",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -1206,5 +1220,5 @@ export const schema = {
             }
         }
     },
-    "version": "0af3cda39103c1c25e676f9a217a746b"
+    "version": "c291739d88a696e9f3e2ed7adb05d3a7"
 };

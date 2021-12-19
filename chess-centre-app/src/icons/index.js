@@ -35,6 +35,8 @@ import { ReactComponent as InfoIcon } from "./info.svg";
 import { ReactComponent as ClickIcon } from "./click.svg";
 import { ReactComponent as AcademicIcon } from "./academic.svg";
 import { ReactComponent as PuzzleIcon } from "./puzzle.svg";
+import { ReactComponent as GlobeIcon } from "./globe.svg";
+import { ReactComponent as QuestionIcon } from "./question.svg";
 
 export {
   AcademicIcon,
@@ -73,5 +75,7 @@ export {
   ClockIcon,
   InfoIcon,
   ClickIcon,
-  PuzzleIcon
+  PuzzleIcon,
+  GlobeIcon,
+  QuestionIcon
 };

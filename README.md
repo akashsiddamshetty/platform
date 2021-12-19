@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="img/bcc-logo.png" width="150" />
-  <h1 align="center"><strong></strong> The Chess Centre | Platform</h1>
+  <img src="img/cc-logo.png" width="120" />
+  <h1 align="center">The Chess Centre</h1>
+  <h2 align="center">Platform</h2>
 </p>
 
 <div align="center">
@@ -27,7 +28,7 @@ This project contains the core source code of **The Chess Centre** application i
   - [Integrations](#integrations)
 - [Contributing](#contributing)
 - [Special thanks 👏](#special-thanks-)
-- [License](#license)
+- [License 📒](#license-)
 - [Contributors ✨](#contributors-)
 
 ## Motivation
@@ -36,9 +37,9 @@ This project contains the core source code of **The Chess Centre** application i
 
 To support this goal a dedicated centre has been established for players to come, learn and play the game face to face. Seamlessly linking the physical face to face game at our fantastic venue with our digital platform, enabling new and existing players to participate and track their progress effortlessly.
 
-- ♟️ website: [chesscentre.online](https:chesscentre.online)
+- ♟️ website: [chesscentre.online](https://www.chesscentre.online)
 
-Our mission is entirely <span style="color:#f0802b;">**#not-for-profit**</span> so we gladly welcome volunteers.
+Our mission is entirely <span style="color:#f0802b;">**#NotForProfit**</span> so we gladly welcome volunteers.
   
 ## Objective
   
@@ -118,7 +119,7 @@ Then pull down the backend environment:
 amplify env pull dev
 ```
   
-You will now have a custom development environment! 🥳
+You will now have a development environment! 🥳
 
 Finally, start the project:
 
@@ -143,6 +144,7 @@ The front-end app uses `create-react-app` and `tailwindcss`. The backend is enti
 - Tailwind CSS
 - GraphQL
 - Node
+- DynamoDB
 
 ### Architecture
 
@@ -189,6 +191,7 @@ Taking advantage of the fantastic online chess sites, we pull in live data from 
 - Blitz Rating
 - Rapid Rating
 - Online Status 
+- Pgn Game Import
 
 <p align="left">
   <img width="200px" src="img/ecf-logo.jpeg" />
@@ -210,20 +213,19 @@ Taking advantage of the fantastic online chess sites, we pull in live data from 
   
 </details>
 
-## Contributing
+## Contributing 
 
 See our [welcome](https://github.com/chess-centre/welcome) respository for guidelines on helping us develop this platform.
 
 ## Special thanks 👏
 
-This project used many amazing open source libraries but for chess specifically, we are grateful for the efforts of:
+This project uses many amazing open source libraries but for chess specifically, we are grateful for the efforts of:
 
 - [PgnViewerJS](https://github.com/mliebelt/PgnViewerJS#readme)
-- [chess.js](https://github.com/jhlywa/chess.js)
 - [Chessground](https://github.com/ornicar/chessground)
-- [pegjs](https://github.com/pegjs/pegjs)
+- [chess.js](https://github.com/jhlywa/chess.js)
 
-## License
+## License 📒
 
 [![License](https://img.shields.io/github/license/chess-centre/platform?color=light)](https://github.com/chess-centre/platform/LICENSE)
 

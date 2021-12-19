@@ -6,18 +6,33 @@ const routes = [
   },
   {
     path: "/app/events",
-    icon: "CalendarIcon",
+    icon: "GlobeIcon",
     name: "Events",
   },
   {
-    path: "/app/results",
-    icon: "ChartsIcon",
-    name: "Results",
+    path: "/app/calendar",
+    icon: "CalendarIcon",
+    name: "Calendar",
+  },
+  {
+    path: "/app/players",
+    icon: "UsersIcon",
+    name: "Players",
   },
   {
     path: "/app/games",
     icon: "PuzzleIcon",
     name: "Games",
+  },
+  {
+    path: "/app/juniors",
+    icon: "AcademicIcon",
+    name: "Juniors",
+  },
+  {
+    path: "/app/faqs",
+    icon: "QuestionIcon",
+    name: "FAQs",
   }
 ];
 

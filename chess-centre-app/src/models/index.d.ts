@@ -60,6 +60,7 @@ export declare class Game {
   readonly type?: string;
   readonly pgn?: S3Object;
   readonly pgnStr?: string;
+  readonly liChessUrl?: string;
   constructor(init: ModelInit<Game>);
   static copyOf(source: Game, mutator: (draft: MutableModel<Game>) => MutableModel<Game> | void): Game;
 }
@@ -80,6 +81,7 @@ export declare class Event {
   readonly complete?: boolean;
   readonly cancelled?: boolean;
   readonly isLive?: boolean;
+  readonly isLiveUrl?: string;
   readonly active?: string;
   readonly results?: (Result | null)[];
   constructor(init: ModelInit<Event>);

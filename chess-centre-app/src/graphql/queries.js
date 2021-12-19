@@ -248,6 +248,7 @@ export const getGame = /* GraphQL */ `
         key
       }
       pgnStr
+      liChessUrl
       _version
       _deleted
       _lastChangedAt
@@ -281,6 +282,7 @@ export const getGame = /* GraphQL */ `
             key
           }
           pgnStr
+          liChessUrl
           _version
           _deleted
           _lastChangedAt
@@ -309,6 +311,7 @@ export const getGame = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -365,6 +368,7 @@ export const getGame = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -411,6 +415,7 @@ export const getGame = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -526,6 +531,7 @@ export const getGame = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -566,6 +572,7 @@ export const getGame = /* GraphQL */ `
             key
           }
           pgnStr
+          liChessUrl
           _version
           _deleted
           _lastChangedAt
@@ -594,6 +601,7 @@ export const getGame = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -650,6 +658,7 @@ export const getGame = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -696,6 +705,7 @@ export const getGame = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -811,6 +821,7 @@ export const getGame = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -836,6 +847,7 @@ export const getGame = /* GraphQL */ `
         complete
         cancelled
         isLive
+        isLiveUrl
         active
         _version
         _deleted
@@ -884,6 +896,7 @@ export const getGame = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -964,6 +977,7 @@ export const getGame = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -1048,6 +1062,7 @@ export const getGame = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -1090,6 +1105,7 @@ export const listGames = /* GraphQL */ `
           key
         }
         pgnStr
+        liChessUrl
         _version
         _deleted
         _lastChangedAt
@@ -1123,6 +1139,7 @@ export const listGames = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -1203,6 +1220,7 @@ export const listGames = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -1276,6 +1294,7 @@ export const listGames = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -1356,6 +1375,7 @@ export const listGames = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -1414,6 +1434,7 @@ export const listGames = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -1457,6 +1478,7 @@ export const listGames = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -1541,6 +1563,7 @@ export const listGamesByEvent = /* GraphQL */ `
           key
         }
         pgnStr
+        liChessUrl
         _version
         _deleted
         _lastChangedAt
@@ -1574,6 +1597,7 @@ export const listGamesByEvent = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -1654,6 +1678,7 @@ export const listGamesByEvent = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -1727,6 +1752,7 @@ export const listGamesByEvent = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -1807,6 +1833,7 @@ export const listGamesByEvent = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -1865,6 +1892,7 @@ export const listGamesByEvent = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -1908,6 +1936,7 @@ export const listGamesByEvent = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -1992,6 +2021,7 @@ export const listGamesByWhiteMember = /* GraphQL */ `
           key
         }
         pgnStr
+        liChessUrl
         _version
         _deleted
         _lastChangedAt
@@ -2025,6 +2055,7 @@ export const listGamesByWhiteMember = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -2105,6 +2136,7 @@ export const listGamesByWhiteMember = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -2178,6 +2210,7 @@ export const listGamesByWhiteMember = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -2258,6 +2291,7 @@ export const listGamesByWhiteMember = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -2316,6 +2350,7 @@ export const listGamesByWhiteMember = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -2359,6 +2394,7 @@ export const listGamesByWhiteMember = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -2443,6 +2479,7 @@ export const listGamesByBlackMember = /* GraphQL */ `
           key
         }
         pgnStr
+        liChessUrl
         _version
         _deleted
         _lastChangedAt
@@ -2476,6 +2513,7 @@ export const listGamesByBlackMember = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -2556,6 +2594,7 @@ export const listGamesByBlackMember = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -2629,6 +2668,7 @@ export const listGamesByBlackMember = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -2709,6 +2749,7 @@ export const listGamesByBlackMember = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -2767,6 +2808,7 @@ export const listGamesByBlackMember = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -2810,6 +2852,7 @@ export const listGamesByBlackMember = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -2892,6 +2935,7 @@ export const syncGames = /* GraphQL */ `
           key
         }
         pgnStr
+        liChessUrl
         _version
         _deleted
         _lastChangedAt
@@ -2925,6 +2969,7 @@ export const syncGames = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -3005,6 +3050,7 @@ export const syncGames = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -3078,6 +3124,7 @@ export const syncGames = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -3158,6 +3205,7 @@ export const syncGames = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -3216,6 +3264,7 @@ export const syncGames = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -3259,6 +3308,7 @@ export const syncGames = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -3507,6 +3557,7 @@ export const syncMembers = /* GraphQL */ `
             key
           }
           pgnStr
+          liChessUrl
           _version
           _deleted
           _lastChangedAt
@@ -3535,6 +3586,7 @@ export const syncMembers = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -3591,6 +3643,7 @@ export const syncMembers = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -3637,6 +3690,7 @@ export const syncMembers = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -3752,6 +3806,7 @@ export const syncMembers = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -3799,6 +3854,7 @@ export const getMember = /* GraphQL */ `
           key
         }
         pgnStr
+        liChessUrl
         _version
         _deleted
         _lastChangedAt
@@ -3832,6 +3888,7 @@ export const getMember = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -3912,6 +3969,7 @@ export const getMember = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -3985,6 +4043,7 @@ export const getMember = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -4065,6 +4124,7 @@ export const getMember = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -4123,6 +4183,7 @@ export const getMember = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -4166,6 +4227,7 @@ export const getMember = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -4265,6 +4327,7 @@ export const getMember = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -4311,6 +4374,7 @@ export const getMember = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -4391,6 +4455,7 @@ export const listMembers = /* GraphQL */ `
             key
           }
           pgnStr
+          liChessUrl
           _version
           _deleted
           _lastChangedAt
@@ -4419,6 +4484,7 @@ export const listMembers = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -4475,6 +4541,7 @@ export const listMembers = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -4521,6 +4588,7 @@ export const listMembers = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -4636,6 +4704,7 @@ export const listMembers = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -4668,6 +4737,7 @@ export const getEvent = /* GraphQL */ `
       complete
       cancelled
       isLive
+      isLiveUrl
       active
       _version
       _deleted
@@ -4716,6 +4786,7 @@ export const getEvent = /* GraphQL */ `
             key
           }
           pgnStr
+          liChessUrl
           _version
           _deleted
           _lastChangedAt
@@ -4744,6 +4815,7 @@ export const getEvent = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -4800,6 +4872,7 @@ export const getEvent = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -4846,6 +4919,7 @@ export const getEvent = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -4940,6 +5014,7 @@ export const getEvent = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -4986,6 +5061,7 @@ export const getEvent = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -5051,6 +5127,7 @@ export const listEvents = /* GraphQL */ `
         complete
         cancelled
         isLive
+        isLiveUrl
         active
         _version
         _deleted
@@ -5099,6 +5176,7 @@ export const listEvents = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -5179,6 +5257,7 @@ export const listEvents = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -5263,6 +5342,7 @@ export const listEvents = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -5310,6 +5390,7 @@ export const listEventsActive = /* GraphQL */ `
         complete
         cancelled
         isLive
+        isLiveUrl
         active
         _version
         _deleted
@@ -5358,6 +5439,7 @@ export const listEventsActive = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -5438,6 +5520,7 @@ export const listEventsActive = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -5522,6 +5605,7 @@ export const listEventsActive = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -5565,6 +5649,7 @@ export const syncEvents = /* GraphQL */ `
         complete
         cancelled
         isLive
+        isLiveUrl
         active
         _version
         _deleted
@@ -5613,6 +5698,7 @@ export const syncEvents = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -5693,6 +5779,7 @@ export const syncEvents = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -5777,6 +5864,7 @@ export const syncEvents = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -5833,6 +5921,7 @@ export const getEntry = /* GraphQL */ `
             key
           }
           pgnStr
+          liChessUrl
           _version
           _deleted
           _lastChangedAt
@@ -5861,6 +5950,7 @@ export const getEntry = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -5917,6 +6007,7 @@ export const getEntry = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -5963,6 +6054,7 @@ export const getEntry = /* GraphQL */ `
             complete
             cancelled
             isLive
+            isLiveUrl
             active
             _version
             _deleted
@@ -6078,6 +6170,7 @@ export const getEntry = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -6103,6 +6196,7 @@ export const getEntry = /* GraphQL */ `
         complete
         cancelled
         isLive
+        isLiveUrl
         active
         _version
         _deleted
@@ -6151,6 +6245,7 @@ export const getEntry = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -6231,6 +6326,7 @@ export const getEntry = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -6315,6 +6411,7 @@ export const getEntry = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -6374,6 +6471,7 @@ export const listEntrys = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -6454,6 +6552,7 @@ export const listEntrys = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -6512,6 +6611,7 @@ export const listEntrys = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -6555,6 +6655,7 @@ export const listEntrys = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt
@@ -6654,6 +6755,7 @@ export const syncEntries = /* GraphQL */ `
               key
             }
             pgnStr
+            liChessUrl
             _version
             _deleted
             _lastChangedAt
@@ -6734,6 +6836,7 @@ export const syncEntries = /* GraphQL */ `
               complete
               cancelled
               isLive
+              isLiveUrl
               active
               _version
               _deleted
@@ -6792,6 +6895,7 @@ export const syncEntries = /* GraphQL */ `
           complete
           cancelled
           isLive
+          isLiveUrl
           active
           _version
           _deleted
@@ -6835,6 +6939,7 @@ export const syncEntries = /* GraphQL */ `
               result
               type
               pgnStr
+              liChessUrl
               _version
               _deleted
               _lastChangedAt

@@ -105,9 +105,6 @@ const listEventsActive = /* GraphQL */ `
               cancelled
               isLive
               active
-              _version
-              _deleted
-              _lastChangedAt
               createdAt
               updatedAt
             }
@@ -120,7 +117,7 @@ const listEventsActive = /* GraphQL */ `
 
 function useEvents() {
   const { user } = useAuthState();
-  const yesterday = new Date(Date.now() - (3600 * 1000 * 24));
+  const yesterday = new Date(Date.now() - 3600 * 1000 * 24);
 
   function alreadyRegistered(event) {
     return !!event.entries.items.find(
@@ -128,9 +125,7 @@ function useEvents() {
     );
   }
   function isFull(event) {
-    return (
-      event.entryCount  >= (event.maxEntries || event.type.maxEntries)
-    );
+    return event.entryCount >= (event.maxEntries || event.type.maxEntries);
   }
 
   return useQuery("eventData", async () => {
@@ -140,7 +135,7 @@ function useEvents() {
       },
     } = await API.graphql({
       query: listEventsActive,
-      variables: { active: 'yes', startDate: { gt: yesterday }} 
+      variables: { active: "yes", startDate: { gt: yesterday } },
     });
 
     const sorted = events
@@ -152,7 +147,7 @@ function useEvents() {
       ...event,
       allowedToRegister: !alreadyRegistered(event) && !isFull(event),
       full: isFull(event),
-      registered: alreadyRegistered(event)
+      registered: alreadyRegistered(event),
     }));
   });
 }
@@ -193,17 +188,24 @@ export default function AppEvents() {
           cancelUrl: redirectTo,
         },
       });
-
       await stripe.redirectToCheckout({ sessionId });
     } catch (error) {
-      const mailToString = `mailto:support@chesscentre.online?subject=Event%20Sign%20Up%20Error&Body=%0D%0A// ---- DO NOT DELETE ----//%0D%0AEvent ID: ${eventId}%0D%0AUser ID: ${user.username}%0D%0AUser: ${user.attributes.given_name} ${user.attributes.family_name}%0D%0A// ---- THANK YOU ----//%0D%0A%0D%0A`
-      addToast(<div>Oops, something isn't working on our end.<br />
-        If this persists, please{" "}
-        <a className="font-bold underline" href={mailToString}>contact us</a>
-        {" "}🛠️</div>, {
-        appearance: "error",
-        autoDismiss: true,
-      });
+      const mailToString = `mailto:support@chesscentre.online?subject=Event%20Sign%20Up%20Error&Body=%0D%0A// ---- DO NOT DELETE ----//%0D%0AEvent ID: ${eventId}%0D%0AUser ID: ${user.username}%0D%0AUser: ${user.attributes.given_name} ${user.attributes.family_name}%0D%0A// ---- THANK YOU ----//%0D%0A%0D%0A`;
+      addToast(
+        <div>
+          Oops, something isn't working on our end.
+          <br />
+          If this persists, please{" "}
+          <a className="font-bold underline" href={mailToString}>
+            contact us
+          </a>{" "}
+          🛠️
+        </div>,
+        {
+          appearance: "error",
+          autoDismiss: true,
+        }
+      );
     }
   };
 
@@ -222,9 +224,11 @@ export default function AppEvents() {
 
   return (
     <>
-      {!error ? (
+      {!error && (
         <>
-          {!isLoading ? (
+          {!isLoading &&
+            data &&
+            data.lenth > 0 &&
             data.map(
               (
                 {
@@ -280,9 +284,7 @@ export default function AppEvents() {
                                 maxEntries || type.maxEntries
                               }`}
                             </p>
-                            {
-
-                            }
+                            {}
                             {type.defaultPrice && !registered && !full ? (
                               <p className="text-sm text-gray-700 mr-2">
                                 <span className="inline">
@@ -294,7 +296,7 @@ export default function AppEvents() {
                                 <span className="inline">
                                   Entry Fee:{" "}
                                   <span className="text-teal-500 text-xs">
-                                    { registered? "PAID" : full ? "Closed" : "" }
+                                    {registered ? "PAID" : full ? "Closed" : ""}
                                   </span>
                                 </span>{" "}
                               </p>
@@ -307,7 +309,11 @@ export default function AppEvents() {
                               ) : (
                                 <p className="text-sm text-gray-700 mr-2">
                                   <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
-                                    { registered ? "Entered" : (full ? "Full" : "") }
+                                    {registered
+                                      ? "Entered"
+                                      : full
+                                      ? "Full"
+                                      : ""}
                                   </span>{" "}
                                 </p>
                               )}
@@ -372,31 +378,93 @@ export default function AppEvents() {
                   </section>
                 );
               }
-            )
-          ) : (
-            <div className="">
-              <div className="text-teal-500 mb-2">
-                <i className="fal fa-spinner-third fa-spin fa-2x fa-fw"></i>
-              </div>
-              <div className="italic text-gray-500">fetching events...</div>
+            )}
+
+          {data && data.length === 0 && (
+            <div className="mt-6 sm:mt-2 mb-10 text-center sm:text-left">
+              <span className="text-8xl sm:text-4xl">
+                <i className="fad fa-frown text-teal-700"></i>
+              </span>
+              <h3 className="mt-2 text-2xl text-gray-600 font-extrabold">
+                Oh, no events...
+              </h3>
+              <p className="mt-6 mx-6 sm:mx-0 text-md text-teal-500">
+                Don't worry, we are busy planning our 2022 schedule.
+              </p>
             </div>
           )}
+
+          {isLoading && (
+            <>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((_, key) => (
+                <SkelectonAppEventCard key={key} />
+              ))}
+            </>
+          )}
         </>
-      ) : (
-        <div className="">
+      )}
+
+      {error && (
+        <div>
           <div className="italic text-red-700">Error fetching events.</div>
         </div>
       )}
+
       <PaymentCompleteModal
         open={paymentSuccesseful}
         setOpen={setPaymentSuccessful}
       />
-      <EventDetailsSlideOut
-        slideState={slideState}
-        setIsSlideOutOpen={setIsSlideOutOpen}
-        user={user}
-      ></EventDetailsSlideOut>
+      <EventDetailsSlideOut {...{ user, slideState, setIsSlideOutOpen }} />
       <RoundTimesModal {...modalState} closeModal={closeModal} />
     </>
+  );
+}
+
+function SkelectonAppEventCard() {
+  return (
+    <section className="animate-pulse relative sm:mr-3 mb-3 rounded-lg border">
+      <div
+        className={classNames(
+          "bg-gray-300",
+          "absolute left-0 z-10 inset-y-0 py-1 px-1.5 text-xs rounded-l-lg"
+        )}
+      ></div>
+      <div
+        className={classNames(
+          "bg-gray-200",
+          "absolute left-3 z-10 inset-y-0 py-1 px-0.5 border-l text-xs"
+        )}
+      ></div>
+      <div className="bg-white dark:bg-gray-800 pt-4 shadow rounded-lg overflow-hidden h-full">
+        <div className="pl-9 pr-4 sm:pl-9 space-y-2 pb-2">
+          <div className="grid grid-cols-3">
+            <div className="col-span-3">
+              <div className="text-lg w-1/2 leading-6 font-medium text-gray-900 dark:text-white h-8 rounded-md bg-gray-200 mb-2"></div>
+              <p className="font-semibold text-2xl sm:text-3xl text-gray-900 m-auto cursor-pointer h-4 bg-gray-200 rounded-md mb-2"></p>
+              <p className="font-semibold text-2xl sm:text-3xl text-gray-900 m-auto cursor-pointer h-4 bg-gray-200 rounded-md mb-2"></p>
+            </div>
+            <div className="flex-initial flex-nowrap">
+              <div className="text-right"></div>
+            </div>
+            <div className="col-span-3">
+              <p className="text-sm text-gray-700 mr-2">
+                <span className="inline"></span>{" "}
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap">
+            <div className="sm:inline text-xs text-gray-900-700 mr-2 mb-2">
+              <i className="fad fa-calendar-alt mr-1"></i>
+            </div>
+            <div className="sm:inline text-xs text-gray-900 cursor-pointer  mr-2 mb-2">
+              <i className="fad fa-flag mr-1"></i>
+            </div>
+            <div className="sm:inline  text-xs text-gray-900 cursor-pointer mr-2 mb-2">
+              <i className="fas fa-info mr-1"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -16,20 +16,24 @@ const routes = [
     component: lazy(() => import("../pages/App/Events")),
   },
   {
+    path: "/calendar",
+    component: lazy(() => import("../pages/App/Calendar")),
+  },
+  {
     path: "/results",
     component: lazy(() => import("../pages/App/Results")),
   },
   {
-    path: "/games/:memberId",
-    component: lazy(() => import("../pages/App/Games")),
-  },
-  {
-    path: "/members",
-    component: lazy(() => import("../pages/App/Members")),
+    path: "/players",
+    component: lazy(() => import("../pages/App/Players")),
   },
   {
     path: "/juniors",
     component: lazy(() => import("../pages/App/Juniors")),
+  },
+  {
+    path: "/faqs",
+    component: lazy(() => import("../pages/App/FAQs")),
   },
   {
     path: "/upgrade",
@@ -47,6 +51,10 @@ const routes = [
     path: "/games",
     component: lazy(() => import("../pages/App/Games")),
   },
+  {
+    path: "/games/:memberId",
+    component: lazy(() => import("../pages/App/Games")),
+  }
 ];
 
 const Page404 = lazy(() => import("../pages/Error/404"));

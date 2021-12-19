@@ -23,7 +23,7 @@ function PageButton({ children, className, ...rest }) {
     <button
       type="button"
       className={classNames(
-        "relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50",
+        "relative inline-flex items-center px-2 py-1 sm:py-2 border border-gray-300 bg-white text-xs text-gray-500 hover:bg-gray-50",
         className
       )}
       {...rest}
@@ -89,6 +89,7 @@ function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,
   setGlobalFilter,
+  searchPlaceholder,
 }) {
   const count = preGlobalFilteredRows.length;
   const [value, setValue] = React.useState(globalFilter);
@@ -112,12 +113,11 @@ function GlobalFilter({
           setValue(e.target.value);
           onChange(e.target.value);
         }}
-        placeholder={`${count} games...`}
+        placeholder={`${count} ${searchPlaceholder}`}
       />
     </div>
   );
 }
-
 
 export function SelectColumnFilter({
   column: { filterValue, setFilter, preFilteredRows, id, render },
@@ -156,8 +156,7 @@ export function SelectColumnFilter({
   );
 }
 
-function Table({ columns, data }) {
-
+function Table({ columns, data, searchPlaceholder = "games..." }) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -179,6 +178,9 @@ function Table({ columns, data }) {
     {
       columns,
       data,
+      initialState: {
+        hiddenColumns: ["id", "liChessUrl"]
+      }
     },
     useFilters, // useFilters!
     useGlobalFilter,
@@ -194,6 +196,7 @@ function Table({ columns, data }) {
           preGlobalFilteredRows={preGlobalFilteredRows}
           globalFilter={state.globalFilter}
           setGlobalFilter={setGlobalFilter}
+          searchPlaceholder={searchPlaceholder}
         />
         {headerGroups.map((headerGroup) =>
           headerGroup.headers.map((column) =>
@@ -207,79 +210,73 @@ function Table({ columns, data }) {
       </div>
       {/* table */}
       <div className="relative mt-4 sm:flex sm:flex-col">
-        <div className=" ">
-          <div className="">
-            <div className="overflow-auto w-80 sm:w-full shadow border-b border-gray-200 rounded-lg">
-              <table
-                {...getTableProps()}
-                className="w-full table-auto divide-y divide-gray-200"
-              >
-                <thead className="bg-teal-700">
-                  {headerGroups.map((headerGroup) => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                      {headerGroup.headers.map((column) => (
-                        // Add the sorting props to control sorting. For this example
-                        // we can add them into the header props
-                        <th
-                          scope="col"
-                          className="group px-2 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider"
-                          {...column.getHeaderProps(
-                            column.getSortByToggleProps()
+        <div className="overflow-auto w-80 sm:w-full shadow border-b border-gray-200 rounded-lg">
+          <table
+            {...getTableProps()}
+            className="w-full table-auto divide-y divide-gray-200"
+          >
+            <thead className="">
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    // Add the sorting props to control sorting. For this example
+                    // we can add them into the header props
+                    <th
+                      scope="col"
+                      className="group bg-teal-700 px-2 py-3 text-center text-xs font-medium text-gray-100 uppercase"
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
+                      <div className=" flex items-center text-center justify-between">
+                        {column.render("Header")}
+                        {/* Add a sort direction indicator */}
+                        <span>
+                          {column.isSorted ? (
+                            column.isSortedDesc ? (
+                              <SortDownIcon className="w-4 h-4 text-gray-200" />
+                            ) : (
+                              <SortUpIcon className="w-4 h-4 text-gray-200" />
+                            )
+                          ) : (
+                            <SortIcon className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100" />
                           )}
-                        >
-                          <div className="flex items-center justify-between">
-                            {column.render("Header")}
-                            {/* Add a sort direction indicator */}
-                            <span>
-                              {column.isSorted ? (
-                                column.isSortedDesc ? (
-                                  <SortDownIcon className="w-4 h-4 text-gray-200" />
-                                ) : (
-                                  <SortUpIcon className="w-4 h-4 text-gray-200" />
-                                )
-                              ) : (
-                                <SortIcon className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100" />
-                              )}
-                            </span>
-                          </div>
-                        </th>
-                      ))}
-                    </tr>
+                        </span>
+                      </div>
+                    </th>
                   ))}
-                </thead>
-                <tbody
-                  {...getTableBodyProps()}
-                  className="bg-white divide-y divide-gray-200"
-                >
-                  {page.map((row, i) => {
-                    // new
-                    prepareRow(row);
-                    return (
-                      <tr {...row.getRowProps()}>
-                        {row.cells.map((cell) => {
-                          return (
-                            <td
-                              {...cell.getCellProps()}
-                              className="py-4 px-2 whitespace-nowrap"
-                              role="cell"
-                            >
-                              {cell.column.Cell.name === "defaultRenderer" ? (
-                                <div className="text-sm text-gray-500">
-                                  {cell.render("Cell")}
-                                </div>
-                              ) : (
-                                cell.render("Cell")
-                              )}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                </tr>
+              ))}
+            </thead>
+            <tbody
+              {...getTableBodyProps()}
+              className="bg-white divide-y divide-gray-200"
+            >
+              {page.map((row, i) => {
+                // new
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td
+                          {...cell.getCellProps()}
+                          className="py-4 px-2 whitespace-nowrap"
+                          role="cell"
+                        >
+                          {cell.column.Cell.name === "defaultRenderer" ? (
+                            <div className="text-sm text-gray-500">
+                              {cell.render("Cell")}
+                            </div>
+                          ) : (
+                            cell.render("Cell")
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
       {/* Pagination */}
@@ -300,20 +297,24 @@ function Table({ columns, data }) {
                 }}
               >
                 {[5, 10, 20].map((pageSize) => (
-                  <option className="hover:bg-teal-200" key={pageSize} value={pageSize}>
+                  <option
+                    className="hover:bg-teal-200"
+                    key={pageSize}
+                    value={pageSize}
+                  >
                     Show {pageSize}
                   </option>
                 ))}
               </select>
             </label>
           </div>
-          <div className="hidden sm:block">
+          <div>
             <nav
-              className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+              className="relative mt-1 sm:mt-0 z-0 inline-flex rounded-md shadow-sm -space-x-px"
               aria-label="Pagination"
             >
               <PageButton
-                className="rounded-l-md"
+                className="rounded-l-md -mr-1 hidden sm:block"
                 onClick={() => gotoPage(0)}
                 disabled={!canPreviousPage}
               >
@@ -324,6 +325,7 @@ function Table({ columns, data }) {
                 />
               </PageButton>
               <PageButton
+                className="rounded-l-md sm:rounded-none"
                 onClick={() => previousPage()}
                 disabled={!canPreviousPage}
               >
@@ -333,7 +335,11 @@ function Table({ columns, data }) {
                   aria-hidden="true"
                 />
               </PageButton>
-              <PageButton onClick={() => nextPage()} disabled={!canNextPage}>
+              <PageButton
+                className="rounded-r-md sm:rounded-none"
+                onClick={() => nextPage()}
+                disabled={!canNextPage}
+              >
                 <span className="sr-only">Next</span>
                 <ChevronRightIcon
                   className="h-5 w-5 text-gray-400"
@@ -341,7 +347,7 @@ function Table({ columns, data }) {
                 />
               </PageButton>
               <PageButton
-                className="rounded-r-md"
+                className="rounded-r-md hidden sm:block"
                 onClick={() => gotoPage(pageCount - 1)}
                 disabled={!canNextPage}
               >
